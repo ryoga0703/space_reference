@@ -6,44 +6,33 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-
     root :to =>"homes#top"
     get "about"=>"homes#about"
 
-    get 'rooms/index'
-    get 'rooms/show'
-    get 'rooms/new'
-    get 'rooms/edit'
+    resources :rooms, only: [:index,:show,:new,:edit,:update,:destroy]
 
-    get 'furnitures/show'
-    get 'furnitures/new'
-    get 'furnitures/edit'
+    resources :customers, only: [:index,:show,:edit,:update]
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
 
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
+    resources :furnitures, only: [:show,:new,:create,:edit,:update,:destroy]
   end
-
 
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
+  get "admin"=>'admin/homes#top'
+
   namespace :admin do
-    get 'customers/show'
-    get 'customers/edit'
+    resources :rooms, only: [:index,:show,:destroy]
 
-    get 'tastes/index'
-    get 'tastes/edit'
+    resources :furnitures, only: [:show,:destroy]
 
-    get 'furnitures/show'
+    resources :tastes, only: [:index,:create,:edit,:update,:destroy]
 
-    get 'rooms/index'
-    get 'rooms/show'
-
-    get 'homes/top'
+    resources :customers, only: [:show,:edit,:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
