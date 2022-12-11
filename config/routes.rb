@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'users/show'
+    get 'users/edit'
+  end
+  namespace :admin do
+    get 'tastes/index'
+    get 'tastes/edit'
+  end
+  namespace :admin do
+    get 'furnitures/show'
+  end
+  namespace :admin do
+    get 'rooms/index'
+    get 'rooms/show'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :public do
+    get 'furnitures/show'
+    get 'furnitures/new'
+    get 'furnitures/edit'
+  end
   namespace :public do
     get 'users/index'
     get 'users/show'
