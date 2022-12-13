@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
     resources :rooms, only: [:index,:show,:new,:edit,:update,:destroy]
 
-    resources :customers, only: [:index,:show,:edit,:update]
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [:index,:show,:edit,:update]
 
     resources :furnitures, only: [:show,:new,:create,:edit,:update,:destroy]
   end
