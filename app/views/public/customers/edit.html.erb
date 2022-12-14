@@ -1,9 +1,9 @@
 <div class="room-evening py-5">
   <div class="container pt-3 py-5">
     <div class="row mb-5">
-      <h4 class="col col-md-2 offset-md-2 text-center title-myedit">
+      <h3 class="col col-md-3 offset-md-2 text-danger text-center border border-warning title-myedit">
         <strong>会員情報編集</strong>
-      </h4>
+      </h3>
     </div>
     <%= form_with model: @customer, url: customer_path(current_customer.id) do |f| %>
     <%= render "public/shared/error_messages", resource: @customer %>

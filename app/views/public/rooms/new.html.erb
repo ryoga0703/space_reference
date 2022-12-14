@@ -1,27 +1,34 @@
 <div class="room-new">
-  <div class="container">
-    <h2 class="mb-3">部屋の写真新規登録</h2>
+  <div class="container py-5">
+    <div class="row mb-5">
+      <h3 class="col col-md-3 text-center text-info border border-info title-roomnew">
+        <strong>部屋の写真新規登録</strong>
+      </h3>
+    </div>
+    <div class="row mb-5">
+      <h4 class="col col-md-2 offset-md-1 text-center text-info border border-info title-roomnew">
+        <strong>部屋の登録</strong>
+      </h4>
+    </div>
     <%= form_with model: @room, url: rooms_path do |f| %>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 offset-md-1">
           <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
           <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
         </div>
-        <div class="col-md-8">
-
+        <div class="col-md-7">
           <div class="form-group">
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-md-3">
-                <%= f.label :profile_image, '部屋の写真選択' %>
+                <%= f.label :room_image, '部屋の写真選択' %>
               </div>
               <div class="col-md-9">
-                <%= f.file_field :profile_image, placeholder:"部屋の写真", accept: "image/*", onchange: 'previewImage(this);' %>
+                <%= f.file_field :room_image, placeholder:"部屋の写真", accept: "image/*", onchange: 'previewImage(this);' %>
               </div>
             </div>
           </div>
-
           <div class="form-group">
-            <div class="row">
+            <div class="row mt-5">
               <div class="col-md-3">
                 <%= f.label :introduction, '部屋の紹介文' %>
               </div>
@@ -30,11 +37,10 @@
               </div>
             </div>
           </div>
-
           <div class="form-group">
             <div class="row">
               <div class="offset-3 col-md-9">
-                <div class="row">
+                <div class="row mt-3">
                   <div class="col-md-4 mx-auto">
                     <%= f.submit "投稿する", class:"btn btn-success btn-block" %>
                   </div>
@@ -42,10 +48,18 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     <% end %>
+    
+    <div class="row my-5">
+      <h4 class="col col-md-2 offset-md-1 text-center text-info border border-info title-roomnew">
+        <strong>家具の登録</strong>
+      </h4>
+    </div>
+    <div class="row my-5">
+      
+    </div>
   </div>
 </div>
 

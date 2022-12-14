@@ -1,0 +1,12 @@
+<%# 以下の.nested-fieldsは、必須です。 %>
+<div class="nested-fields">
+  <div class="field">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <%= album_track.label :title, 'トラック名' %>
+    <%= album_track.text_field :title %>
+  </div>
+  <div class="field">
+    <%= link_to_remove_association "トラックを削除", album_track %>
+  </div>
+  <hr>
+</div>

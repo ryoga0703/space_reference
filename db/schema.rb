@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_11_143713) do
+ActiveRecord::Schema.define(version: 2022_12_14_150247) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2022_12_11_143713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "album_tracks", force: :cascade do |t|
+    t.integer "album_id"
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_album_tracks_on_album_id"
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "artist", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -53,7 +68,6 @@ ActiveRecord::Schema.define(version: 2022_12_11_143713) do
   create_table "rooms", force: :cascade do |t|
     t.integer "taste_id", null: false
     t.integer "customer_id", null: false
-    t.string "name", default: "", null: false
     t.text "introduction", default: "", null: false
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -66,4 +80,5 @@ ActiveRecord::Schema.define(version: 2022_12_11_143713) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "album_tracks", "albums"
 end
