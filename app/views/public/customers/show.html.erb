@@ -1,37 +1,39 @@
 <div class="container">
-  <div class="row mb-5">
-    <h4 class="col col-md-2 offset-md-1 text-center" style="background-color:#DDD">
-      <strong>マイページ</strong>
-    </h4>
-  </div>
-  <div class="row mb-3">
-    <h5 class="col col-md-2 text-center offset-md-1">
-      <strong>　　　　登録情報</strong>
-    </h5>
-    <div class="col col-md-3">
-      <%= link_to "　編集する　", edit_customer_path, class: "btn btn-success" %>
+  <div class="img1">
+    <div class="row mb-5">
+      <h4 class="col col-md-2 offset-md-1 text-center" style="background-color:#DDD">
+        <strong>マイページ</strong>
+      </h4>
     </div>
-  </div>
-  <div class="row mb-4">
-    <table class="table col col-md-8 offset-md-2" border="2">
-      <tr>
-        <td bgcolor="#F2F2F2" width="25%">氏名</td>
-        <td width="75%">
-          <span class="mr-2"><%= @customer.last_name %></span>
-          <span><%= @customer.first_name %></span>
-        </td>
-      </tr>
-      <tr>
-        <td bgcolor="#F2F2F2">カナ</td>
-        <td>
-          <span class="mr-2"><%= @customer.last_name_kana %></span>
-          <span><%= @customer.first_name_kana %></span>
-        </td>
-      </tr>
-      <tr>
-        <td bgcolor="#F2F2F2">メールアドレス</td>
-        <td><%= @customer.email %></td>
-      </tr>
-    </table>
+    <div class="row mb-4">
+      <table class="table col col-md-8 offset-md-2" border="2">
+        <tr>
+          <td bgcolor="#F2F2F2" width="25%">氏名</td>
+          <td width="75%">
+            <span class="mr-2"><%= @customer.last_name %></span>
+            <span><%= @customer.first_name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#F2F2F2">カナ</td>
+          <td>
+            <span class="mr-2"><%= @customer.last_name_kana %></span>
+            <span><%= @customer.first_name_kana %></span>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#F2F2F2">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row mb-3">
+      <h5 class="col col-md-2 text-center offset-md-1">
+        <strong>　　　　会員情報</strong>
+      </h5>
+      <div class="col col-md-3">
+        <%= link_to "　編集する　", edit_customer_path, class: "btn btn-success" %>
+      </div>
+    </div>
   </div>
 </div>
