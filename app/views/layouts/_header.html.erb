@@ -1,37 +1,56 @@
-<div class="jumbotron">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-4" style="background: url('<%= asset_path('mokuzai.jpg') %>'); background-size: 100% 100%;">
   <div class="container">
-      <div class="row">
-        <div class='col-md-2'>
-          <a href="/">rogo</a>
-        </div>
-      <% if customer_signed_in? %>
-      <div class='col-md-5 offset-md-5 pull-right d-flex align-items-center'>
-        <div class="text-right">
-          <button type="button" class="btn btn-light"><%= link_to 'マイページ',customer_path(current_customer.id), class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '会員一覧',customers_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '部屋一覧',rooms_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to 'ログアウト',destroy_customer_session_path, method: :delete, class: "text-dark" %></button>
-        </div>
-      </div>
-      <% elsif admin_signed_in? %>
-      <div class='col-md-6 offset-md-4 pull-right d-flex align-items-center'>
-        <div class="text-right">
-          <button type="button" class="btn btn-light"><%= link_to '会員一覧',admin_customers_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '部屋一覧',admin_rooms_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to 'テイスト一覧',admin_tastes_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: "text-dark" %></button>
-        </div>
-      </div>
-      <% else %>
-      <div class='col-md-5 offset-md-5 pull-right d-flex align-items-center'>
-        <div class="text-right">
-          <button type="button" class="btn btn-light"><%= link_to 'About',about_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '部屋一覧',rooms_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '新規登録',new_customer_registration_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to 'ログイン',new_customer_session_path, class: "text-dark" %></button>
-        </div>
-      <% end %>
-      </div>
+    <a class="navbar-brand" href="#">
+      LOGO
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+
+        <% if customer_signed_in? %>
+          <li class="nav-item ml-auto">
+            <%= link_to 'マイページ',customer_path(current_customer.id), class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to '会員一覧', customers_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to '部屋一覧', rooms_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "nav-link text-dark" %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item ml-auto">
+            <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to '部屋一覧', admin_rooms_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to 'テイスト一覧', admin_tastes_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark" %>
+          </li>
+        <% else %>
+          <li class="nav-item ml-auto">
+            <%= link_to 'About', about_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to '部屋一覧', rooms_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to '新規登録', new_customer_registration_path, class: "nav-link text-dark" %>
+          </li>
+          <li class="nav-item ml-auto">
+            <%= link_to 'ログイン', new_customer_session_path, class: "nav-link text-dark" %>
+          </li>
+        <% end %>
+
+      </ul>
     </div>
   </div>
-</div>
+</nav>

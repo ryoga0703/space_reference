@@ -1,0 +1,67 @@
+<div class="room-new">
+  <div class="container">
+    <h2 class="mb-3">部屋の写真新規登録</h2>
+    <%= form_with model: @room, url: rooms_path do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
+          <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.label :profile_image, '部屋の写真選択' %>
+              </div>
+              <div class="col-md-9">
+                <%= f.file_field :profile_image, placeholder:"部屋の写真", accept: "image/*", onchange: 'previewImage(this);' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.label :introduction, '部屋の紹介文' %>
+              </div>
+              <div class="col-md-9">
+                <%= f.text_area :introduction, placeholder:"魅力や工夫したところなどを自由に書いてください！", rows: 5, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="offset-3 col-md-9">
+                <div class="row">
+                  <div class="col-md-4 mx-auto">
+                    <%= f.submit "投稿する", class:"btn btn-success btn-block" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+function previewImage(obj)
+{
+  // ファィル処理の初期化
+	var fileReader = new FileReader();
+
+	// ファイル処理のメソッドを使用する
+	fileReader.onload = (function() {
+	  // 選択されたファイルのデータを#previewに展開
+		document.getElementById('preview').src = fileReader.result;
+	});
+
+	// 画像を処理
+	fileReader.readAsDataURL(obj.files[0]);
+}
+</script>
