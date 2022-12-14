@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2022_12_11_143713) do
     t.integer "customer_id", null: false
     t.string "name", default: "", null: false
     t.text "introduction", default: "", null: false
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
