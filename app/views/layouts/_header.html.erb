@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-4" style="background: url('<%= asset_path('mokuzai.jpg') %>'); background-size: 100% 100%;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-0" style="background: url('<%= asset_path('mokuzai.jpg') %>'); background-size: 100% 100%;">
   <div class="container">
-    <a class="navbar-brand" href="#">
-      LOGO
+    <a class="navbar-brand pb-0" href="/">
+      <video width="90px" height="90px" src="https://4dea25e2bbd241eaae370e24bec39fc2.vfs.cloud9.ap-northeast-1.amazonaws.com/_static/space_reference/app/assets/images/Space_Reference_bglogo.mp4" autoplay muted></video>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item ml-auto">
-            <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark" %>
+            <%= link_to '会員一覧', admin_path, class: "nav-link text-dark" %>
           </li>
           <li class="nav-item ml-auto">
             <%= link_to '部屋一覧', admin_rooms_path, class: "nav-link text-dark" %>
