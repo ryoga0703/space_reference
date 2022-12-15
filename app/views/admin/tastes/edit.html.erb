@@ -1,2 +1,22 @@
-<h1>Admin::Tastes#edit</h1>
-<p>Find me in app/views/admin/tastes/edit.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h1>テイスト編集</h1>
+      <%= form_with model: @taste, url: admin_taste_path(@taste.id) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td>テイスト名</td>
+            <td>
+              <%= f.text_field :name, class: 'form-control' %>
+            </td>
+            <td>
+              <%= f.submit '変更を保存', class: "btn btn-success" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

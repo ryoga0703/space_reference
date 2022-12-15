@@ -31,6 +31,6 @@ class Public::RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:introduction, :room_image)
+    params.require(:room).permit(:introduction, :room_image, :taste_id, :customer_id)
   end
 end

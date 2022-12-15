@@ -1,2 +1,40 @@
-<h1>Admin::Tastes#index</h1>
-<p>Find me in app/views/admin/tastes/index.html.erb</p>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h1>テイスト一覧・追加</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>テイスト名</td>
+            <%= form_with model: @taste, url: admin_tastes_path do |f| %>
+              <td>
+              <%= f.text_field :name, class: 'form-control' %>
+              </td>
+              <td>
+                <%= f.submit '新規登録', class: "btn btn-success" %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>テイスト</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tastes.each do |taste| %>
+           <tr>
+             <td><%= taste.name %></td>
+             <td><%= link_to "編集する", edit_admin_taste_path(taste.id), class: "btn btn-success" %></td>
+             <td><%= link_to "削除する", admin_taste_path(taste.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %></td>
+           </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
