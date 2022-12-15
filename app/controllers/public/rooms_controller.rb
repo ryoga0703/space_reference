@@ -31,6 +31,9 @@ class Public::RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:introduction, :room_image, :taste_id, :customer_id)
+    # album_tracks_attributesが子のモデルに保存する要素
+    #   :id, :_destroyをつけることで、編集と削除が可能になる
+    params.require(:room).permit(:introduction, :room_image, :taste_id, :customer_id,
+    furnitures_attributes: [:id, :name, :price, :introduction, :retailer_link, :_destroy])
   end
 end

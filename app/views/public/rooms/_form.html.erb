@@ -1,0 +1,48 @@
+<div class="field">
+  <%= room.label :name, '家具の名前' %><br>
+  <%= room.text_field :name %><br>
+  <%= room.label :introduction, '家具の説明' %><br>
+  <%= room.text_field :introduction %><br>
+</div>
+<h3>Details --></h3>
+<div class="details">
+  <%# トラックの追加フォームをするボタン %>
+  <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
+  <%= link_to_add_association 'トラックの追加',
+                              # form_withのformタグ変数
+                              room,
+                              # フォームのデータを追加するモデル名
+                              :furnitures,
+                              # 追加するフォームの部分テンプレート
+                              partial: "furniture_fields",
+                              # オプション
+                              data: {
+                                # フォームを追加する場所の指定
+                                association_insertion_node: '#furniture-forms',
+                                # フォームを前後どの位置に追加するか。(初期値: before)
+                                association_insertion_method: 'after'
+                              },
+                              # フォームオブジェクトを指定する場合(初期値 : f)
+                              form_name: 'furniture',
+                              # 部分テンプレートに渡す変数があれば記述
+                              render_options: {
+                                locals: {
+                                  # 通常の部分テンプレートと同じ記述
+                                }
+                              }
+  %>
+
+  <hr>
+
+  <%# フォームを追加する場所。%>
+  <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
+  <div id="furniture-forms">
+    <%= room.fields_for :furnitures do |furniture| %>
+      <% render 'furniture_fields', furniture: furniture %>
+    <% end %>
+  </div>
+
+</div>
+<div class="field">
+  <%= room.submit %>
+</div>

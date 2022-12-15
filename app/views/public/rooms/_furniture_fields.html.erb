@@ -1,0 +1,12 @@
+<%# 以下の.nested-fieldsは、必須です。 %>
+<div class="nested-fields">
+  <div class="field">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <%= furniture.label :name, '家具の名前' %>
+    <%= furniture.text_field :name %>
+  </div>
+  <div class="field">
+    <%= link_to_remove_association "トラックを削除", furniture %>
+  </div>
+  <hr>
+</div>
