@@ -2,7 +2,7 @@
   <div class="container py-5">
     <div class="row mb-5">
       <h3 class="col col-md-3 text-center text-info border border-info title-roomnew">
-        <strong>部屋の写真新規登録</strong>
+        <strong>部屋の新規登録</strong>
       </h3>
     </div>
     <div class="row mb-5">
@@ -23,7 +23,7 @@
                 <%= f.label :room_image, '部屋の写真選択' %>
               </div>
               <div class="col-md-9">
-                <%= f.file_field :room_image, placeholder:"部屋の写真", accept: "image/*", onchange: 'previewImage(this);' %>
+                <%= f.file_field :room_image, placeholder:"部屋の写真", required: true, accept: "image/*", onchange: 'previewImage(this);' %>
               </div>
             </div>
           </div>
@@ -43,18 +43,7 @@
                 <%= f.label :introduction, '部屋の紹介文' %>
               </div>
               <div class="col-md-9">
-                <%= f.text_area :introduction, placeholder:"魅力や工夫したところなどを自由に書いてください！", rows: 5, class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="offset-3 col-md-9">
-                <div class="row mt-3">
-                  <div class="col-md-4 mx-auto">
-                    <%= f.submit "投稿する", class:"btn btn-success btn-block" %>
-                  </div>
-                </div>
+                <%= f.text_area :introduction, placeholder:"魅力や工夫したところなどを自由に書いてください！", required: true, rows: 5, class: 'form-control' %>
               </div>
             </div>
           </div>
@@ -68,7 +57,19 @@
       </h4>
     </div>
     <div class="row my-5">
-
+      <div class="col-md-4 offset-md-1">
+        <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
+        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
+      </div>
+      <div class="col-md-7">
+      <%# バリデーションメッセージの部分テンプレート %>
+      <%= render 'layouts/error_messages', model: @room %>
+      <%# フォーム部分 %>
+      <%= form_with model: @room do |room| %>
+        <%# フォームのテンプレート %>
+        <% render 'form', room: room %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,14 +1,7 @@
-<div class="field">
-  <%= room.label :name, '家具の名前' %><br>
-  <%= room.text_field :name %><br>
-  <%= room.label :introduction, '家具の説明' %><br>
-  <%= room.text_field :introduction %><br>
-</div>
-<h3>Details --></h3>
 <div class="details">
-  <%# トラックの追加フォームをするボタン %>
+  <%# 家具の追加フォームをするボタン %>
   <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
-  <%= link_to_add_association 'トラックの追加',
+  <%= link_to_add_association '家具の追加',
                               # form_withのformタグ変数
                               room,
                               # フォームのデータを追加するモデル名
@@ -44,5 +37,5 @@
 
 </div>
 <div class="field">
-  <%= room.submit %>
+  <%= room.submit '新規登録', class: "btn btn-success" %>
 </div>
