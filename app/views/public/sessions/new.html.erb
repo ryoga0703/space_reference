@@ -1,42 +1,46 @@
-<div class="container">
-  <div class="row my-5">
-    <h4 class="col col-md-2 offset-md-2 text-center" style="background-color:#DDD">
-      <strong>ログイン</strong>
-    </h4>
-  </div>
-    <div class="row mb-2">
-      <h5 class="col col-md-4 offset-md-3 text-center" style="background-color:#DDD">
-        <strong>会員の方はこちらからログイン</strong>
-      </h5>
+<div class="customer-session">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <h4 class="col col-md-2 offset-md-2 py-1 text-center" style="background-color:rgba(191,255,0,0.3);">
+        <strong>ログイン</strong>
+      </h4>
     </div>
-    <div class="row mb-5 mt-3">
-      <div class="col col-md-8 offset-md-4">
-      <%= form_with model: @customer, url: customer_session_path do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <div class="field">
-          <label class="email">メールアドレス　　　</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", size: 50 %>
-        </div>
-
-        <div class="field">
-          <label class="password">パスワード　　　　　</label>
-          <%= f.password_field :password, autocomplete: "current-password", size: 50 %>
-        </div>
-
-        <div class="actions mt-5 col-md-1 offset-md-2">
-          <%= f.submit "　ログイン　", class:"btn btn-primary" %>
-        </div>
-      <% end %>
+      <div class="row mb-5">
+        <h5 class="col col-md-4 offset-md-3 py-2 text-center" style="background-color:rgba(191,255,0,0.3);">
+          <strong>会員の方はこちらからログイン</strong>
+        </h5>
       </div>
-    </div>
-    <div class="row mb-2">
-      <h5 class="col col-md-3 offset-md-3 text-center mt-4" style="background-color:#DDD">
-        <strong>会員登録がお済みでない方</strong>
-      </h5>
-    </div>
-    <div class="row mb-5 mt-3">
-      <div class="col col-md-8 offset-md-4">
-        <p><%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。</p>
+      <div class="row mb-5 mt-3">
+        <div class="col col-md-8 offset-md-3">
+        <%= form_with model: @customer, url: customer_session_path do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
+          <div class="row py-3 field">
+            <label class="email">メールアドレス　　　</label>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", size: 40 %>
+          </div>
+
+          <div class="row py-3 field">
+            <label class="password">パスワード　　　　　</label>
+            <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
+          </div>
+
+          <div class="row py-4 field">
+            <div class="actions col-md-1 offset-md-3">
+              <%= f.submit "　ログイン　", class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <h5 class="col col-md-3 offset-md-3 py-2 text-center mt-4" style="background-color:rgba(191,255,0,0.3);">
+          <strong>会員登録がお済みでない方</strong>
+        </h5>
+      </div>
+      <div class="row my-5">
+        <div class="col col-md-8 offset-md-4">
+          <p><%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。</p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,42 +1,54 @@
-<div class="container">
-  <div class="row">
-    <div class="col mx-auto">
-      <h4>
+<div class="admin-customers">
+  <div class="container">
+    <div class="row py-5">
+      <h3 class="col col-md-4 py-1 text-center" style="background-color:rgba(136,0,27,0.4);">
         <%= @customer.last_name %><%= @customer.first_name %>さんの<strong>会員詳細</strong>
-      </h4>
-      <table width="60%" height="150%">
-        <tr>
-          <td width="25%">会員ID</td>
-          <td width="75%"><%= @customer.id %></td>
-        </tr>
-        <tr>
-          <td>氏名</td>
-          <td>
-            <span class="mr-2"><%= @customer.last_name %></span>
-            <span><%= @customer.first_name %></span>
-          </td>
-        </tr>
-        <tr>
-          <td>フリガナ</td>
-          <td>
-            <span class="mr-2"><%= @customer.last_name_kana %></span>
-            <span><%= @customer.first_name_kana %></span>
-          </td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @customer.email %></td>
-        </tr>
-        <tr>
-          <td>会員ステータス</td>
-          <% if @customer.is_deleted == false %>
-            <td class="text-success font-weight-bold">有効</td>
-          <% else %>
-            <td class="text-secondary font-weight-bold">退会</td>
-          <% end %>
-        </tr>
-      </table>
-      <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-success" %>
+      </h3>
+    </div>
+
+    <div class="row py-5">
+      <div class="col col-md-7 mx-auto text-center">
+        <table class="table table-bordered">
+          <tr>
+            <td style="background-color:rgba(136,0,27,0.6);" width="25%">会員ID</td>
+            <td style="background-color:rgba(255,255,255,0.7);" width="75%"><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(136,0,27,0.5);">氏名</td>
+            <td style="background-color:rgba(255,255,255,0.9);">
+              <span class="mr-2"><%= @customer.last_name %></span>
+              <span><%= @customer.first_name %></span>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(136,0,27,0.6);">フリガナ</td>
+            <td style="background-color:rgba(255,255,255,0.8);">
+              <span class="mr-2"><%= @customer.last_name_kana %></span>
+              <span><%= @customer.first_name_kana %></span>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(136,0,27,0.5);">メールアドレス</td>
+            <td style="background-color:rgba(255,255,255,0.9);"><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td style="background-color:rgba(136,0,27,0.6);">会員ステータス</td>
+            <% if @customer.is_deleted == false %>
+              <td class="text-success font-weight-bold" style="background-color:rgba(255,255,255,0.8);">有効</td>
+            <% else %>
+              <td class="text-secondary font-weight-bold" style="background-color:rgba(255,255,255,0.8);">退会</td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col col-md-2 offset-md-3 text-center">
+        <%= link_to "　編集する　", edit_admin_customer_path, class: "btn btn-success" %>
+      </div>
+      <div class="col col-md-2 offset-md-1 text-center">
+        <%= link_to '　*^_^*　', admin_path, class: "btn btn-warning" %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,22 +1,23 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <h1>テイスト編集</h1>
-      <%= form_with model: @taste, url: admin_taste_path(@taste.id) do |f| %>
-      <table>
-        <tbody>
-          <tr>
-            <td>テイスト名</td>
-            <td>
-              <%= f.text_field :name, class: 'form-control' %>
-            </td>
-            <td>
-              <%= f.submit '変更を保存', class: "btn btn-success" %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <% end %>
+<div class="admin-tastes">
+  <div class='container py-5'>
+    <div class="row mb-5">
+      <h3 class="col col-md-3 text-center" style="background-color:rgba(111,111,111,0.7);">
+        <strong>テイスト編集</strong>
+      </h3>
     </div>
+
+    <%= form_with model: @taste, url: admin_taste_path(@taste.id) do |f| %>
+    <div class='row pt-3 pb-5'>
+      <div class='col col-md-2 offset-md-2'>
+        テイスト名
+      </div>
+      <div class='col col-md-3 field'>
+        <%= f.text_field :name, class: 'form-control', required: true %>
+      </div>
+      <div class='col col-md-3 field'>
+        <%= f.submit '　変更を保存　', class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

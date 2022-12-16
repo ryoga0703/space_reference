@@ -1,40 +1,44 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <h1>テイスト一覧・追加</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td>テイスト名</td>
-            <%= form_with model: @taste, url: admin_tastes_path do |f| %>
-              <td>
-              <%= f.text_field :name, class: 'form-control' %>
-              </td>
-              <td>
-                <%= f.submit '新規登録', class: "btn btn-success" %>
-              </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+<div class="admin-tastes">
+  <div class='container py-5'>
+    <div class="row mb-5">
+      <h3 class="col col-md-3 text-center" style="background-color:rgba(111,111,111,0.7);">
+        <strong>テイスト一覧・追加</strong>
+      </h3>
+    </div>
 
-      <table class='table'>
-        <thead>
-          <tr>
-            <th>テイスト</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @tastes.each do |taste| %>
-           <tr>
-             <td><%= taste.name %></td>
-             <td><%= link_to "編集する", edit_admin_taste_path(taste.id), class: "btn btn-success" %></td>
-             <td><%= link_to "削除する", admin_taste_path(taste.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %></td>
-           </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <%= form_with model: @taste, url: admin_tastes_path do |f| %>
+    <div class='row pt-3 pb-5'>
+      <div class='col col-md-2 offset-md-2'>
+        テイスト名
+      </div>
+      <div class='col col-md-3 field'>
+        <%= f.text_field :name, class: 'form-control', required: true %>
+      </div>
+      <div class='col col-md-3 field'>
+        <%= f.submit '　新規登録　', class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+
+    <div class='row'>
+      <div class='col-md-6 offset-md-2'>
+        <table class='table'>
+          <thead style="background-color:rgba(151,151,151,0.6);">
+            <tr>
+              <th colspan="3" class='py-3'>　テイスト</th>
+            </tr>
+          </thead>
+          <tbody style="background-color:rgba(223,223,223,0.4);">
+            <% @tastes.each do |taste| %>
+             <tr>
+               <td width="50%"><%= taste.name %></td>
+               <td width="25%"><%= link_to "　編集　", edit_admin_taste_path(taste.id), class: "btn btn-success" %></td>
+               <td width="25%"><%= link_to "　削除　", admin_taste_path(taste.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %></td>
+             </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
