@@ -13,6 +13,7 @@ body {
   background-attachment: fixed;
   width: 100%;
   background-color: #fffaf4;
+  /* TODO : ヘッダーとフッターの高さを変更したらここも変更(コンテンツが後から増える場合はないほうが良い) */
   height: calc(100vh - 122px - 200px);
 }
 
@@ -43,8 +44,6 @@ body {
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #464646;
 
-  /* TODO : ヘッダーとフッターの高さを変更したらここも変更 */
-  height: calc(100vh - 102px - 50px);
 }
 
   /* 会員登録ページ背景画像 */
@@ -54,8 +53,7 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  width: 100%;
-  height: calc(100vh - 102px - 50px);
+  background-size: cover;
 }
 
   /* 会員ログインページ背景画像 */
@@ -161,5 +159,6 @@ body {
   background-color: #464646;
   background-size: cover;
   width: 100%;
-  height: calc(100vh - 102px - 50px);
+  /* min-heightで最低限の高さ */
+  min-height: calc(100vh - 102px - 50px);
 }

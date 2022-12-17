@@ -10,11 +10,11 @@
         <strong>部屋の登録</strong>
       </h4>
     </div>
-    <%= form_with model: @room, url: rooms_path do |f| %>
+    <%= form_with model: @room, url: rooms_path, method: :post do |f| %>
       <div class="row">
         <div class="col-md-4 offset-md-1">
           <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
-          <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
+          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
         </div>
         <div class="col-md-7">
           <div class="form-group">
@@ -23,7 +23,7 @@
                 <%= f.label :room_image, '部屋の写真選択' %>
               </div>
               <div class="col-md-9">
-                <%= f.file_field :room_image, placeholder:"部屋の写真", required: true, accept: "image/*", onchange: 'previewImage(this);' %>
+                <%= f.file_field :room_image, placeholder:"部屋の写真", required: true, accept: "image/*", onchange: 'roomImagePreviewImage(this);' %>
               </div>
             </div>
           </div>
@@ -49,44 +49,71 @@
           </div>
         </div>
       </div>
-    <% end %>
 
-    <div class="row my-5">
-      <h4 class="col col-md-2 offset-md-1 text-center text-info border border-info title-roomnew">
-        <strong>家具の登録</strong>
-      </h4>
-    </div>
-    <div class="row my-5">
-      <div class="col-md-4 offset-md-1">
-        <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
-        <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
+      <hr>
+
+      <div class="row mt-5">
+        <h4 class="col col-md-2 offset-md-1 text-center text-info border border-info title-roomnew">
+          <strong>家具の登録</strong>
+        </h4>
       </div>
-      <div class="col-md-7">
-      <%# バリデーションメッセージの部分テンプレート %>
-      <%= render 'layouts/error_messages', model: @room %>
-      <%# フォーム部分 %>
-      <%= form_with model: @room do |room| %>
-        <%# フォームのテンプレート %>
-        <% render 'form', room: room %>
-      <% end %>
+      <div class="row">
+        <div class="col">
+        <%= render 'form', room: f %>
+        </div>
       </div>
-    </div>
+      <div class="field">
+        <%= f.submit '新規登録', class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
 <script>
-function previewImage(obj)
-{
-  // ファィル処理の初期化
-	var fileReader = new FileReader();
+  function roomImagePreviewImage(obj)
+  {
+    // ファィル処理の初期化
+  	var fileReader = new FileReader();
 
-	// ファイル処理のメソッドを使用する
-	fileReader.onload = (function() {
-	  // 選択されたファイルのデータを#previewに展開
-		document.getElementById('preview').src = fileReader.result;
-	});
+  	// ファイル処理のメソッドを使用する
+  	fileReader.onload = (function() {
+  	  // 選択されたファイルのデータを#previewに展開
+  		document.getElementById('room_image_preview').src = fileReader.result;
+  	});
 
-	// 画像を処理
-	fileReader.readAsDataURL(obj.files[0]);
-}
+  	// 画像を処理
+  	fileReader.readAsDataURL(obj.files[0]);
+  }
+
+  function furnitureImagePreviewImage(obj)
+  {
+    // ファィル処理の初期化
+  	var fileReader = new FileReader();
+
+  	// ファイル処理のメソッドを使用する
+  	fileReader.onload = (function() {
+  	  // 選択されたファイルのデータを#previewに展開
+  		document.getElementById('furniture_image_preview').src = fileReader.result;
+  	});
+
+  	// 画像を処理
+  	fileReader.readAsDataURL(obj.files[0]);
+  }
+
+  function furnitureImagePreviewImage2(obj)
+  {
+    // ファィル処理の初期化
+  	var fileReader = new FileReader();
+
+  	// ファイル処理のメソッドを使用する
+  	fileReader.onload = (function() {
+  	  // 選択されたファイルのデータを#previewに展開
+  		document.getElementById('furniture_image_preview_2').src = fileReader.result;
+  	});
+
+  	// 画像を処理
+  	fileReader.readAsDataURL(obj.files[0]);
+  }
+
+
 </script>

@@ -16,11 +16,11 @@
             </div>
             <div class="col col-md-4">
               <%= f.label :last_name, "(姓)" %>
-              <%= f.text_field :last_name, autofocus: true, placeholder:"令和" %>
+              <%= f.text_field :last_name, autofocus: true, placeholder:"令和", required: true %>
             </div>
             <div class="col col-md-4">
               <%= f.label :first_name, "(名)" %>
-              <%= f.text_field :first_name, placeholder:"道子" %>
+              <%= f.text_field :first_name, placeholder:"道子", required: true %>
             </div>
           </div>
 
@@ -30,11 +30,11 @@
             </div>
             <div class="col col-md-4">
             <%= f.label :last_name_kana, "(セイ)" %>
-            <%= f.text_field :last_name_kana, placeholder:"レイワ", size: 18 %>
+            <%= f.text_field :last_name_kana, placeholder:"レイワ", required: true, size: 18 %>
             </div>
             <div class="col col-md-4">
             <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, placeholder:"ミチコ", size: 18 %>
+            <%= f.text_field :first_name_kana, placeholder:"ミチコ", required: true, size: 18 %>
             </div>
           </div>
 
@@ -43,7 +43,7 @@
               <label class="email">メールアドレス</label>
             </div>
             <div class="col col-md-6 offset-md-1">
-              <%= f.email_field :email, placeholder:"sample@example.com", size: 42 %>
+              <%= f.email_field :email, placeholder:"sample@example.com", required: true, size: 42 %>
             </div>
           </div>
 
@@ -52,7 +52,7 @@
               <label class="password">パスワード　(６文字以上)</label>
             </div>
             <div class="col col-md-6">
-              <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, autocomplete: "new-password", required: true %>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
               <label class="password_confirmation">パスワード　(確認用)</label>
             </div>
             <div class="col col-md-6">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
             </div>
           </div>
 

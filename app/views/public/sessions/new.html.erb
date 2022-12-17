@@ -16,12 +16,12 @@
           <%= render "public/shared/error_messages", resource: resource %>
           <div class="row py-3 field">
             <label class="email">メールアドレス　　　</label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", size: 40 %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", required: true, size: 40 %>
           </div>
 
           <div class="row py-3 field">
             <label class="password">パスワード　　　　　</label>
-            <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
+            <%= f.password_field :password, autocomplete: "current-password", required: true, size: 40 %>
           </div>
 
           <div class="row py-4 field">
