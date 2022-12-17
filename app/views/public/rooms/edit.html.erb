@@ -1,2 +1,98 @@
-<h1>Public::Rooms#edit</h1>
-<p>Find me in app/views/public/rooms/edit.html.erb</p>
+<div class="room-new">
+  <div class="container py-5">
+    <div class="row mb-5">
+      <h3 class="col col-md-3 text-center text-info border border-info title-roomnew">
+        <strong>部屋の編集</strong>
+      </h3>
+    </div>
+
+    <%= form_with model: @room, url: room_path do |f| %>
+      <div class="row">
+        <div class="col-md-5" style="text-align: center;">
+          <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
+          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="room-img-size">
+        </div>
+        <div class="col-md-6 offset-md-1">
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <%= f.label :room_image, '部屋の写真選択' %>
+              </div>
+              <div class="col-md-9">
+                <%= f.file_field :room_image, placeholder:"部屋の写真", required: true, accept: "image/*", onchange: 'roomImagePreviewImage(this);' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <%= f.label :taste_id, 'テイスト' %>
+              </div>
+              <div class="col-md-9">
+                <%= f.select :taste_id, options_from_collection_for_select(Taste.all, :id, :name), required: true, class: "w-50" %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <%= f.label :introduction, '部屋の紹介文' %>
+              </div>
+              <div class="col-md-9">
+                <%= f.text_area :introduction, placeholder:"魅力や工夫したところなどを自由に書いてください！", required: true, rows: 5, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row mt-5">
+        <h4 class="col col-md-2 offset-md-1 text-center text-info border border-info title-roomnew">
+          <strong>家具の編集</strong>
+        </h4>
+      </div>
+      <div class="row">
+        <div class="col">
+        <%= render 'form', room: f %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.submit '編集内容を保存', class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function roomImagePreviewImage(obj)
+  {
+    // ファィル処理の初期化
+  	var fileReader = new FileReader();
+
+  	// ファイル処理のメソッドを使用する
+  	fileReader.onload = (function() {
+  	  // 選択されたファイルのデータを#previewに展開
+  		document.getElementById('room_image_preview').src = fileReader.result;
+  	});
+
+  	// 画像を処理
+  	fileReader.readAsDataURL(obj.files[0]);
+  }
+
+  function furnitureImagePreviewImage(obj)
+  {
+    // ファィル処理の初期化
+  	var fileReader = new FileReader();
+
+  	// ファイル処理のメソッドを使用する
+  	fileReader.onload = (function() {
+  	  // 選択されたファイルのデータを#previewに展開
+  		document.getElementById('furniture_image_preview').src = fileReader.result;
+  	});
+
+  	// 画像を処理
+  	fileReader.readAsDataURL(obj.files[0]);
+  }
+</script>

@@ -1,84 +1,112 @@
-  <div class="container py-5">
-    <div class="row mb-5">
-      <h2 class="col center-block text-center">
-        <strong><%= @room.customer.last_name %><%= @room.customer.first_name %>さんの部屋詳細</strong>
-      </h2>
+<div class="container py-5">
+  <div class="row mb-5">
+    <h2 class="col col-md-6 offset-md-3 py-1 text-center"  style="background-color:rgba(111,111,111,0.4);">
+      <%= link_to customer_path(@room.customer.id), class: 'link' do %>
+        <a class="text-dark"><%= @room.customer.last_name %><%= @room.customer.first_name %>さんの部屋詳細</a>
+      <% end %>
+    </h2>
+  </div>
+
+  <hr>
+  <hr>
+
+  <div class="row pt-3">
+    <h3 class="col col-md-2 text-center"  style="background-color:rgba(111,111,111,0.4);">
+      <strong>部屋</strong>
+    </h3>
+  </div>
+
+  <div class="row py-5">
+    <div class="col-md-10 offset-md-1" style="text-align: center;">
+      <%= image_tag @room.room_image, size: "850x500" %>
     </div>
+  </div>
+
+    <hr>
+
+  <div class="row py-3">
+    <div class="col-md-2 offset-md-1">
+      <h3>テイスト</h3>
+    </div>
+    <div class="col-md-6 offset-md-2">
+      <h3><%= @room.taste.name %></h3>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row py-3">
+    <div class="col-md-3 offset-md-1">
+      <h3>部屋の紹介文</h3>
+    </div>
+  </div>
+  <div class="row pt-3 pb-5">
+    <div class="col-md-10 offset-md-2">
+      <h5><%= @room.introduction %></h5>
+    </div>
+  </div>
 
     <hr>
     <hr>
 
-    <div class="row pt-3">
-      <h3 class="col col-md-2 text-center">
-        <strong>部屋</strong>
-      </h3>
+  <div class="row pt-3 pb-5">
+    <h3 class="col col-md-2 text-center"  style="background-color:rgba(111,111,111,0.4);">
+      <strong>家具</strong>
+    </h3>
+    <div class="col-md-5 offset-md-1 text-center text-danger">
+      <br>
+      ※家具の写真が購入先のリンクになっております。
     </div>
+  </div>
 
-    <div class="row py-5">
-      <div class="col-md-10 offset-md-1" style="text-align: center;">
-        <%= image_tag @room.room_image, size: "850x500" %>
-      </div>
-    </div>
-
-      <hr>
-
-    <div class="row py-3">
-      <div class="col-md-2 offset-md-1">
-        <h3>テイスト</h3>
-      </div>
-      <div class="col-md-6 offset-md-2">
-        <h3><%= @room.taste.name %></h3>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row py-3">
-      <div class="col-md-3 offset-md-1">
-        <h3>部屋の紹介文</h3>
-      </div>
-    </div>
-    <div class="row pt-3 pb-5">
-      <div class="col-md-10 offset-md-1">
-        <h5>　<%= @room.introduction %></h5>
-      </div>
-    </div>
-
-      <hr>
-      <hr>
-
-    <div class="row py-3">
-      <h3 class="col col-md-2 offset-md-1 text-center">
-        <strong>家具　　</strong>
-      </h3>
-    </div>
-
-    <%# 家具の存在確認 %>
-    <% if @room.furnitures.count == 0 %>
-      <%# 家具がない場合の表示 %>
+  <%# 家具の存在確認 %>
+  <% if @room.furnitures.count == 0 %>
+    <%# 家具がない場合の表示 %>
     <div class="row py-3">
       <div class="col col-md-4 offset-md-2 text-center">
         <h5>おすすめの家具なし</h5>
       </div>
     </div>
-    <% else %>
+  <% else %>
     <%# 家具がある場合の表示 %>
-    <div class="row py-3">
-          <% @room.furnitures.each do |furniture| %>
-            <%= link_to furniture.retailer_link do %>
-              <%= image_tag furniture.furniture_image, class: 'furniture-img-size' %>
-            <% end %>
-              <%= furniture.name %>
-              税抜価格<%= furniture.price %>円
-              <%= furniture.introduction %>
-
-          <% end %>
+    <% @room.furnitures.each do |furniture| %>
+    <div class="row py-5">
+      <div class="col-md-5 offset-md-1" style="text-align: center;">
+        <%= link_to furniture.retailer_link do %>
+          <%= image_tag furniture.furniture_image, class: 'furniture-img-size' %>
+        <% end %>
+      </div>
+      <div class="col-md-5 offset-md-1">
+        <div class="row mt-3">
+          商品名　<%= furniture.name %>
+        </div>
+        <div class="row mt-3">
+          税抜価格　<%= furniture.price %>円
+        </div>
+        <div class="row mt-3">
+          家具の紹介文
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-10 offset-md-1">
+            <%= furniture.introduction %>
+          </div>
+        </div>
+      </div>
     </div>
+    <hr>
     <% end %>
+  <% end %>
 
-
-      <ul>
-        <li><%= link_to 'Edit Album', edit_room_path(@room) %></li>
-        <li><%= link_to 'Delete Album', room_path(@room), method: :delete %></li>
-      </ul>
+  <div class="row py-5">
+    <div class="col-md-2 offset-md-2">
+      <%= link_to edit_room_path(@room) do %>
+        <h5 class="text-success">部屋編集</h5>
+      <% end %>
+    </div>
+    <div class="col-md-2 ">
+      <%= link_to room_path(@room), method: :delete do %>
+        <h5 class="text-danger">部屋削除</h5>
+      <% end %>
+    </div>
+  </div>
 </div>
