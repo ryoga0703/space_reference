@@ -12,11 +12,11 @@
     </div>
     <%= form_with model: @room, url: rooms_path, method: :post do |f| %>
       <div class="row">
-        <div class="col-md-4 offset-md-1">
+        <div class="col-md-5" style="text-align: center;">
           <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
-          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid">
+          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="room-img-size">
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6 offset-md-1">
           <div class="form-group">
             <div class="row mt-3">
               <div class="col-md-3">
@@ -33,7 +33,7 @@
                 <%= f.label :taste_id, 'テイスト' %>
               </div>
               <div class="col-md-9">
-                <%= f.select :taste_id, options_from_collection_for_select(Taste.all, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %>
+                <%= f.select :taste_id, options_from_collection_for_select(Taste.all, :id, :name), required: true, class: "w-50" %>
               </div>
             </div>
           </div>
@@ -99,21 +99,4 @@
   	// 画像を処理
   	fileReader.readAsDataURL(obj.files[0]);
   }
-
-  function furnitureImagePreviewImage2(obj)
-  {
-    // ファィル処理の初期化
-  	var fileReader = new FileReader();
-
-  	// ファイル処理のメソッドを使用する
-  	fileReader.onload = (function() {
-  	  // 選択されたファイルのデータを#previewに展開
-  		document.getElementById('furniture_image_preview_2').src = fileReader.result;
-  	});
-
-  	// 画像を処理
-  	fileReader.readAsDataURL(obj.files[0]);
-  }
-
-
 </script>

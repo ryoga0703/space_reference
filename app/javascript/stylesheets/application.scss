@@ -5,6 +5,17 @@ body {
   padding-top: 102px;
   padding-bottom: 50px;
 }
+  /* 部屋登録プレビュー大きさ */
+.room-img-size {
+  max-height: 262px;
+  max-width: 445px;
+}
+
+  /* 家具登録プレビュー大きさ */
+.furniture-img-size {
+  max-height: 262px;
+  max-width: 262px;
+}
 
   /* topページ背景画像 */
 .topbg {
