@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <div class="col">
-        <%= render 'form', room: f %>
+          <%= render 'form', room: f %>
         </div>
       </div>
       <div class="field">
@@ -83,13 +83,20 @@
 
   function furnitureImagePreviewImage(obj)
   {
+    const regex = /[^0-9]/g
+    const result = obj.id.replace(regex,"");
+    const index = parseInt(result);
+
+
+    const previews = document.getElementsByClassName("furniture-img-size")
     // ファィル処理の初期化
   	var fileReader = new FileReader();
 
   	// ファイル処理のメソッドを使用する
   	fileReader.onload = (function() {
   	  // 選択されたファイルのデータを#previewに展開
-  		document.getElementById('furniture_image_preview').src = fileReader.result;
+  		// document.getElementById('furniture_image_preview').src = fileReader.result;
+  		previews[index].src = fileReader.result
   	});
 
   	// 画像を処理
