@@ -36,9 +36,24 @@
       <% end %>
     </div>
     <div class="col-md-2 text-center pt-3">
-      <%= link_to customer_path(room.customer), style: "color: #000; text-decoration: none;" do %>
-        <%= room.customer.last_name %><%= room.customer.first_name %>さん
-      <% end %>
+      <div class="row">
+        <%= link_to customer_path(room.customer), style: "color: #000; text-decoration: none;" do %>
+          <%= room.customer.last_name %><%= room.customer.first_name %>さん
+        <% end %>
+      </div>
+      <div class="row py-5">
+        <% if room.favorited_by?(current_customer) %>
+          <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
+            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= room.favorites.count %> いいね👍
+          <% end %>
+        <% else %>
+          <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= room.favorites.count %> いいね
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-5 text-center py-5">
       <%= room.introduction %>

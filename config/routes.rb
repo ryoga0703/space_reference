@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get "about"=>"homes#about"
 
-    resources :rooms, only: [:new,:create,:show,:index,:edit,:update,:destroy]
+    resources :rooms, only: [:new,:create,:show,:index,:edit,:update,:destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
 
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
