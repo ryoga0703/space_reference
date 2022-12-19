@@ -31,18 +31,13 @@
 </div>
   <hr>
 <div class="row">
-
   <%# フォームを追加する場所。%>
   <%#   link_to_add_associationのassociation_insertion_nodeで指定 %>
   <div id="furniture-forms" class="col-12">
     <div class="col-12">
-
-
-    <%= room.fields_for :furnitures do |furniture| %>
-
-
-      <% render 'furniture_fields', furniture: furniture %>
-    <% end %>
+      <%= room.fields_for :furnitures do |furniture| %>
+        <% render 'furniture_fields', furniture: furniture %>
+      <% end %>
     </div>
   </div>
 </div>

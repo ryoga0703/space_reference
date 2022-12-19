@@ -1,76 +1,74 @@
 <%# 以下の.nested-fieldsは、必須です。 %>
-
-
 <div class="nested-fields" style="width:100%">
   <div  style="flex: 0 0 100% !important;">
-  <div class="col-12">
-    <div class="fields row">
-      <div class="col-4">
-        <img id="furniture_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="furniture-img-size" >
-      </div>
-      <div class="col-8">
-      <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
-      <div class="form-group">
-        <div class="row mt-3">
-          <div class="col-3">
-            <%= furniture.label :furniture_image, '家具の写真選択' %>
-          </div>
-          <div class="col-9">
+    <div class="col-12">
+      <div class="fields row">
+        <div class="col-4">
+          <img id="furniture_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="furniture-img-size" >
+        </div>
+        <div class="col-8">
+          <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-3">
+                <%= furniture.label :furniture_image, '家具の写真選択' %>
+              </div>
+              <div class="col-9">
 
-              <%= furniture.file_field :furniture_image, placeholder:"家具の写真", required: true, accept: "image/*", onchange: 'furnitureImagePreviewImage(this);' %>
+                  <%= furniture.file_field :furniture_image, placeholder:"家具の写真", accept: "image/*", onchange: 'furnitureImagePreviewImage(this);' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-3">
+                <%= furniture.label :name, '商品名' %>
+              </div>
+              <div class="col-9">
+                <%= furniture.text_field :name %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-3">
+                <%= furniture.label :price, '家具の税抜き価格' %>
+              </div>
+              <div class="col-9">
+                <%= furniture.number_field :price, min: 0, placeholder: "1000" %>円
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-3">
+                <%= furniture.label :introduction, '家具の紹介文' %>
+              </div>
+              <div class="col-9">
+                <%= furniture.text_area :introduction, rows: 5, class: 'form-control' %>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-3">
+                <%= furniture.label :retailer_link, '購入先のリンク' %>
+              </div>
+              <div class="col-9">
+                <%= furniture.text_field :retailer_link, size: "58" %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="row mt-3">
-          <div class="col-3">
-            <%= furniture.label :name, '商品名' %>
-          </div>
-          <div class="col-9">
-            <%= furniture.text_field :name, required: true %>
+        <div class="row mt-5">
+          <div class="col col-12 offset-2 text-center my-3 py-1" style="background-color:rgba(200,203,255,0.8);">
+            <div class="field">
+              <%= link_to_remove_association "家具を削除", furniture %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="row mt-3">
-          <div class="col-3">
-            <%= furniture.label :price, '家具の税抜き価格' %>
-          </div>
-          <div class="col-9">
-            <%= furniture.number_field :price, min: 0, placeholder: "1000", required: true %>円
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row mt-3">
-          <div class="col-3">
-            <%= furniture.label :introduction, '家具の紹介文' %>
-          </div>
-          <div class="col-9">
-            <%= furniture.text_area :introduction, rows: 5, required: true, class: 'form-control' %>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row mt-3">
-          <div class="col-3">
-            <%= furniture.label :retailer_link, '購入先のリンク' %>
-          </div>
-          <div class="col-9">
-            <%= furniture.text_field :retailer_link, required: true, size: "58" %>
-          </div>
-        </div>
+        <hr>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col col-12 offset-2 text-center my-3 py-1" style="background-color:rgba(200,203,255,0.8);">
-        <div class="field">
-          <%= link_to_remove_association "家具を削除", furniture %>
-        </div>
-      </div>
-    </div>
-    <hr>
   </div>
-  </div>
-</div>
 </div>

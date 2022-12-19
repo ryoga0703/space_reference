@@ -1,8 +1,8 @@
 <div class="container py-5">
   <div class="row mb-5">
-    <h2 class="col col-md-6 offset-md-3 py-1 text-center"  style="background-color:rgba(111,111,111,0.4);">
-      <%= link_to customer_path(@room.customer.id), class: 'link' do %>
-        <a class="text-dark"><%= @room.customer.last_name %><%= @room.customer.first_name %>さんの部屋詳細</a>
+    <h2 class="col col-md-6 offset-md-3 py-1 d-flex align-items-center justify-content-center"  style="background-color:rgba(111,111,111,0.2);">
+      <%= link_to customer_path(@room.customer.id), style: "color: #000; text-decoration: none;" do %>
+        <div class="text-dark"><strong><%= @room.customer.last_name %><%= @room.customer.first_name %></strong>さんの部屋詳細</div>
       <% end %>
     </h2>
   </div>
@@ -11,7 +11,7 @@
   <hr>
 
   <div class="row pt-3">
-    <h3 class="col col-md-2 text-center"  style="background-color:rgba(111,111,111,0.4);">
+    <h3 class="col col-md-2 d-flex align-items-center justify-content-center"  style="background-color:rgba(111,111,111,0.2);">
       <strong>部屋</strong>
     </h3>
   </div>
@@ -50,11 +50,10 @@
     <hr>
 
   <div class="row pt-3 pb-5">
-    <h3 class="col col-md-2 text-center"  style="background-color:rgba(111,111,111,0.4);">
+    <h3 class="col col-md-2 d-flex align-items-center justify-content-center"  style="background-color:rgba(111,111,111,0.2);">
       <strong>家具</strong>
     </h3>
-    <div class="col-md-5 offset-md-1 text-center text-danger">
-      <br>
+    <div class="col-md-5 offset-md-1 d-flex align-items-center justify-content-center text-danger">
       ※家具の写真が購入先のリンクになっております。
     </div>
   </div>
@@ -100,12 +99,12 @@
   <% if @room.customer == current_customer %>
   <div class="row py-5">
     <div class="col-md-2 offset-md-2">
-      <%= link_to edit_room_path(@room) do %>
+      <%= link_to edit_room_path(@room), style: "text-decoration: none;" do %>
         <h5 class="text-success">部屋編集</h5>
       <% end %>
     </div>
     <div class="col-md-2 ">
-      <%= link_to room_path(@room), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+      <%= link_to room_path(@room), method: :delete, "data-confirm" => "本当に削除しますか？", style: "text-decoration: none;" do %>
         <h5 class="text-danger">部屋削除</h5>
       <% end %>
     </div>
