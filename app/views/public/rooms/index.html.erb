@@ -15,13 +15,13 @@
   </div>
 
   <div class="row py-3" style="background-color:#ddd;">
-    <div class="col-5 text-center">
+    <div class="col-md-5 text-center">
       < - - 部屋の写真 - - >
     </div>
-    <div class="col-2 text-center">
+    <div class="col-md-2 text-center">
       < - - ユーザー名 - - >
     </div>
-    <div class="col-5 text-center">
+    <div class="col-md-5 text-center">
       < - - 部屋の紹介文 - - >
     </div>
   </div>
@@ -30,17 +30,17 @@
 
   <% @rooms.each do |room| %>
   <div class="row py-3" style="background-color:#eee;">
-    <div class="col-5 text-center" style="background-color:#eee;">
+    <div class="col-md-5 text-center" style="background-color:#eee;">
       <%= link_to room_path(room) do %>
         <%= image_tag room.room_image, size: "430x250" %>
       <% end %>
     </div>
-    <div class="col-2 text-center pt-3">
+    <div class="col-md-2 text-center pt-3">
       <%= link_to customer_path(room.customer), style: "color: #000; text-decoration: none;" do %>
         <%= room.customer.last_name %><%= room.customer.first_name %>さん
       <% end %>
     </div>
-    <div class="col-5 text-center py-5">
+    <div class="col-md-5 text-center py-5">
       <%= room.introduction %>
     </div>
   </div>

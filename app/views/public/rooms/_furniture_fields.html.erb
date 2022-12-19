@@ -4,7 +4,7 @@
     <div class="col-12">
       <div class="fields row">
         <div class="col-4">
-          <img id="furniture_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="furniture-img-size" >
+          <img  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="furniture-img-size" >
         </div>
         <div class="col-8">
           <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
@@ -14,8 +14,10 @@
                 <%= furniture.label :furniture_image, '家具の写真選択' %>
               </div>
               <div class="col-9">
-
-                  <%= furniture.file_field :furniture_image, placeholder:"家具の写真", accept: "image/*", onchange: 'furnitureImagePreviewImage(this);' %>
+                  <div class="d-flex">
+                    <%= furniture.file_field :furniture_image, placeholder:"家具の写真", accept: "image/*", onchange: 'furnitureImagePreviewImage(this);' %>
+                    <!--<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="furniture-img-cocoon" style="max-width:200px;max-height:200px;object-fit:cover;" >-->
+                  </div>
               </div>
             </div>
           </div>

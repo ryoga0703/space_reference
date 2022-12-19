@@ -84,19 +84,20 @@
   function furnitureImagePreviewImage(obj)
   {
     const regex = /[^0-9]/g
-    const result = obj.id.replace(regex,"");
-    const index = parseInt(result);
+    //const result = obj.id.replace(regex,"");
+    //const index = parseInt(result);
 
 
-    const previews = document.getElementsByClassName("furniture-img-size")
+    //const previews = document.getElementsByClassName("furniture-img-size")
     // ファィル処理の初期化
   	var fileReader = new FileReader();
 
   	// ファイル処理のメソッドを使用する
-  	fileReader.onload = (function() {
+  	fileReader.onload = (function(e) {
   	  // 選択されたファイルのデータを#previewに展開
   		// document.getElementById('furniture_image_preview').src = fileReader.result;
-  		previews[index].src = fileReader.result
+  		//previews[index].src = fileReader.results
+  		$(`#${obj.id}`).closest('.fields').find('img').attr('src', e.target.result);
   	});
 
   	// 画像を処理

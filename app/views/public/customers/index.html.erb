@@ -25,6 +25,7 @@
           </thead>
           <tbody style="background-color:rgba(248,255,228,0.8);">
             <% @customers.each do |customer| %>
+              <% if customer.is_deleted == false %>
               <tr>
                 <td><%= customer.id %></td>
                 <td>
@@ -33,12 +34,9 @@
                   <% end %>
                 </td>
                 <td><%= customer.email %></td>
-                <% if customer.is_deleted == false %>
-                  <td class="text-success font-weight-bold">有効</td>
-                <% else %>
-                  <td class="text-secondary font-weight-bold">退会</td>
-                <% end %>
+                <td class="text-success font-weight-bold">有効</td>
               </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>
