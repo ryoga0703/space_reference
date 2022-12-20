@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   get "admin"=>'admin/homes#top'
 
   namespace :admin do
-    resources :rooms, only: [:index,:show,:destroy]
+    resources :rooms, only: [:index,:show,:destroy] do
+      resources :comments, only: [:destroy]
+    end
 
     resources :furnitures, only: [:show,:destroy]
 
