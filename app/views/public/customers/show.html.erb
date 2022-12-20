@@ -52,6 +52,14 @@
           <td style="background-color:rgba(44,199,87,0.6);">フォロワー数</td>
           <td style="background-color:rgba(255,255,255,0.6);"><%= @customer.followers.count %>人</td>
         </tr>
+        <tr>
+          <td style="background-color:rgba(44,199,87,0.6);">部屋の投稿数</td>
+          <td style="background-color:rgba(255,255,255,0.6);">
+            <%= link_to rooms_individual_path(@customer) do %>
+              <%= @customer.rooms.count %>部屋
+            <% end %>
+          </td>
+        </tr>
       </table>
     </div>
     <% if @customer.id == current_customer.id %>

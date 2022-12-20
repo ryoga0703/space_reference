@@ -3,6 +3,11 @@ class Public::RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def individual
+    @customer = Room.find(params[:id])
+    @rooms = @customer.rooms.all
+  end
+
   def show
     @room = Room.find(params[:id])
     @comment = Comment.new
