@@ -28,7 +28,7 @@ class Public::RoomsController < ApplicationController
   end
 
   def update
-    @room = Room.find(params[:id])
+    @room = current_customer.rooms.find(params[:id])
     if @room.update(room_params)
       redirect_to room_path(params[:id])
     else
@@ -37,7 +37,7 @@ class Public::RoomsController < ApplicationController
   end
 
   def destroy
-    @room = Room.find(params[:id])
+    @room = current_customer.rooms.find(params[:id])
     @room.destroy
     redirect_to rooms_path
   end

@@ -6,6 +6,13 @@ body {
   padding-bottom: 50px;
 }
 
+.text-shadow {
+  -moz-text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
+  -webkit-text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
+  -ms-text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
+  text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
+}
+
   /* 部屋登録プレビュー大きさ */
 .room-img-size {
   max-height: 262px;
@@ -16,17 +23,6 @@ body {
 .furniture-img-size {
   max-height: 262px;
   max-width: 262px;
-}
-
-  /* topページ背景画像 */
-.topbg {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  width: 100%;
-  background-color: #fffaf4;
-  /* TODO : ヘッダーとフッターの高さを変更したらここも変更(コンテンツが後から増える場合はないほうが良い) */
-  height: calc(100vh - 122px - 200px);
 }
 
   /* topページ背景色画像 */
@@ -57,6 +53,7 @@ body {
   background-color: #464646;
 
   width: 100%;
+  /* TODO : ヘッダーとフッターの高さを変更したらここも変更(コンテンツが後から増える場合はないほうが良い) */
   /* min-heightで最低限の高さ */
   min-height: calc(100vh - 102px - 50px);
 }

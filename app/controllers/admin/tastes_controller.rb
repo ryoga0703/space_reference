@@ -1,4 +1,5 @@
 class Admin::TastesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @tastes = Taste.all
     @taste = Taste.new

@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!  # 管理者ログイン以外は入れなくする
   def show
     @customer = Customer.find(params[:id])
   end

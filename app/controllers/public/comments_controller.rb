@@ -16,7 +16,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def update
-    @room = Room.find(params[:room_id])
+    @room = current_customer.rooms.find(params[:room_id])
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to room_path(@room), notice: "コメントを編集しました"
@@ -27,7 +27,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_customer.comments.find(params[:id])
     @comment.destroy
     flash[:danger] = "コメントを削除しました"
     redirect_back(fallback_location: root_path)
