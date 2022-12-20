@@ -1,9 +1,15 @@
 <div class="room-noon py-5">
   <div class="container  py-5">
     <div class="row mb-5">
+      <% if @customer.id == current_customer.id %>
       <h3 class="col col-md-3 offset-md-2 text-success text-center border border-success title-myshow">
         <strong>マイページ</strong>
       </h3>
+      <% else %>
+      <h3 class="col col-md-4 offset-md-2 text-success text-center border border-success title-myshow">
+        <strong><%= @customer.last_name %><%= @customer.first_name %></strong>さんの部屋詳細
+      </h3>
+      <% end %>
     </div>
     <div class="row mb-4">
       <table class="table table-bordered col col-md-8 offset-md-2">
@@ -21,9 +27,30 @@
             <span><%= @customer.first_name_kana %></span>
           </td>
         </tr>
+        <% if @customer.id == current_customer.id %>
         <tr>
           <td style="background-color:rgba(44,199,87,0.6);">メールアドレス</td>
           <td style="background-color:rgba(255,255,255,0.6);"><%= @customer.email %></td>
+        </tr>
+        <% else %>
+        <tr>
+          <td style="background-color:rgba(44,199,87,0.6);">フォローステータス</td>
+          <td style="background-color:rgba(255,255,255,0.6);">
+            <% if current_customer.following?(@customer) %>
+              <%= link_to "フォロー中", customer_relationships_path(@customer.id), method: :delete, style: "color: #ff0303; text-decoration: none;" %>
+            <% else %>
+              <%= link_to "フォローする", customer_relationships_path(@customer.id), method: :post, style: "text-decoration: none;" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+        <tr>
+          <td style="background-color:rgba(44,199,87,0.6);">フォロー数</td>
+          <td style="background-color:rgba(255,255,255,0.6);"><%= @customer.followings.count %>人</td>
+        </tr>
+        <tr>
+          <td style="background-color:rgba(44,199,87,0.6);">フォロワー数</td>
+          <td style="background-color:rgba(255,255,255,0.6);"><%= @customer.followers.count %>人</td>
         </tr>
       </table>
     </div>
