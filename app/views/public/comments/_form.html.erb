@@ -1,0 +1,25 @@
+<div class="container py-5">
+  <div class="row pt-3 pb-5">
+    <h3 class="col col-md-3 d-flex align-items-center justify-content-center"  style="background-color:rgba(111,111,111,0.2);">
+      <strong>コメントを編集</strong>
+    </h3>
+  </div>
+
+  <%= form_with model: [@room, @comment] do |f|%>
+  <div class="row pt-5">
+    <div class="col col-md-6 offset-md-3">
+      <div class="field d-flex align-items-center justify-content-center" style="flex: 0 0 100% !important;">
+        <%= f.text_area :body, required: true, class: "w-50" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-5">
+    <div class="col col-md-3 offset-md-4 d-flex align-items-center justify-content-center"></div>
+      <div class="submit">
+        <%= f.submit "送信する"%>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

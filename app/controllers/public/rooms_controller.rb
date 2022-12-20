@@ -5,6 +5,8 @@ class Public::RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @comment = Comment.new
+    @comments = @room.comments.includes(:customer)
   end
 
   def new

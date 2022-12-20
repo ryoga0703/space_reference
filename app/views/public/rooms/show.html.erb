@@ -110,4 +110,58 @@
     </div>
   </div>
   <% end %>
+
+  <hr>
+
+  <div class="row py-3">
+    <div class="col-md-3 offset-md-1">
+      <h3>コメント一覧</h3>
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="col-md-6 offset-md-3">
+      <% if customer_signed_in? %>
+        <%= form_with model: [@room, @comment] do |f| %>
+          <%= f.text_area :body, placeholder: "感想やアドバイスなど！", required: true, class: "w-50" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <% @comments.each do |c| %>
+  <div class="row py-3">
+    <div class="col-md-8 offset-md-2">
+      <div class="row">
+        <%= c.body %>
+      </div>
+      <div class="row pt-3">
+        <div class="col-md-5 offset-md-1">
+          <%= link_to customer_path(c.customer.id), style: "color: #000; text-decoration: none;" do %>
+            <div class="text-dark"><strong><%= c.customer.last_name %><%= c.customer.first_name %></strong>さんより</div>
+          <% end %>
+        </div>
+
+        <% if customer_signed_in? %>
+          <% if current_customer.id == c.customer_id %>
+            <div class="col-md-1 offset-md-3">
+              <%= link_to "編集", edit_room_comment_path(@room, c), style: "color: #00a500; text-decoration: none;" %>
+            </div>
+            <div class="col-md-1 offset-md-1">
+              <%= link_to "削除", room_comment_path(@room, c), method: :delete, "data-confirm" => "本当に削除しますか？", style: "color: #ca0000; text-decoration: none;" %>
+            </div>
+          <% elsif current_customer.id == @room.customer_id then %>
+            <div class="col-md-1 offset-md-5">
+              <%= link_to "削除", room_comment_path(@room, c), method: :delete, "data-confirm" => "本当に削除しますか？", style: "color: #ca0000; text-decoration: none;" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <% end %>
 </div>
