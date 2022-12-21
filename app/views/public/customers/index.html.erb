@@ -6,7 +6,25 @@
       </h3>
     </div>
 
-    <div class="row mt-4">
+    <div class="row pb-5">
+      <div class="col-md-5 offset-md-7">
+        <%= search_form_for @q do |f| %>
+          <div class="row py-2">
+            <!--name_contは、あいまい検索を指定-->
+            <%= f.label :last_name, "名前(姓)" %>
+            <div class="pl-3"><%= f.search_field :last_name_cont, placeholder:"部分一致あり" %></div>
+            </div>
+            <div class="row">
+            <%= f.label :first_name, "名前(名)" %>
+            <div class="pl-3"><%= f.search_field :first_name_cont, placeholder:"部分一致あり" %></div>
+
+            <div class="pl-3"><%= f.submit "検索" %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
       <div class="col-md-6 offset-md-6 d-flex align-items-center justify-content-center text-danger">
         ※名前が詳細ページのリンクになっております。
       </div>
