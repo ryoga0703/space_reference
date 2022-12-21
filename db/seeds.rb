@@ -15,5 +15,6 @@ Customer.create!(
    last_name: 'ゲスト',
    first_name: 'ログイン',
    last_name_kana: 'ゲスト',
-   first_name_kana: 'ログイン'
+   first_name_kana: 'ログイン',
+   password: '111111'
 )
