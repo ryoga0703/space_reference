@@ -1,4 +1,6 @@
 class Public::RoomsController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_check, only: [:new, :create, :edit, :update, :destroy]
   def index
     @rooms = Room.all
   end
@@ -40,6 +42,12 @@ class Public::RoomsController < ApplicationController
     @room = current_customer.rooms.find(params[:id])
     @room.destroy
     redirect_to rooms_path
+  end
+
+  def guest_check
+    if current_customer == Customer.find(1)
+      redirect_to root_path,notice: "このページを見るには会員登録が必要です。"
+    end
   end
 
   private

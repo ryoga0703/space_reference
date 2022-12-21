@@ -9,3 +9,11 @@ Admin.create!(
    email: 'a@a',
    password: '111111'
 )
+
+Customer.create!(
+   email: 'guest@example.com',
+   last_name: 'ゲスト',
+   first_name: 'ログイン',
+   last_name_kana: 'ゲスト',
+   first_name_kana: 'ログイン'
+)

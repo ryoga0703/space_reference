@@ -48,15 +48,17 @@
       <div class="row py-5" style="width:100%">
         <div  style="flex: 0 0 100% !important;">
           <div class="col-12 text-center">
-            <% if room.favorited_by?(current_customer) %>
-              <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= room.favorites.count %> いいね👍
-              <% end %>
-            <% else %>
-              <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
-                <i class="fas fa-heart" aria-hidden="true"></i>
-                <%= room.favorites.count %> いいね
+            <% if current_customer.id != 1 %>
+              <% if room.favorited_by?(current_customer) %>
+                <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= room.favorites.count %> いいね👍
+                <% end %>
+              <% else %>
+                <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
+                  <i class="fas fa-heart" aria-hidden="true"></i>
+                  <%= room.favorites.count %> いいね
+                <% end %>
               <% end %>
             <% end %>
           </div>

@@ -26,7 +26,7 @@
           </thead>
           <tbody style="background-color:rgba(248,255,228,0.8);">
             <% @customers.each do |customer| %>
-              <% if customer.is_deleted == false %>
+              <% if customer.is_deleted == false && customer.id != 1 %>
               <tr>
                 <td><%= customer.id %></td>
                 <td>

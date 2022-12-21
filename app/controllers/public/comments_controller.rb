@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+  before_action :authenticate_customer!
   def create
     @room = Room.find(params[:room_id])
     @comment = current_customer.comments.build(comment_params)

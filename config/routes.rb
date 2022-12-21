@@ -16,6 +16,10 @@ Rails.application.routes.draw do
       resources :comments, only: [:edit, :update, :create, :destroy]
     end
 
+    devise_scope :customer do
+      post 'guest_sign_in', to: 'sessions#guest_sign_in'
+    end
+
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:index,:show,:edit,:update] do

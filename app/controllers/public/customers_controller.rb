@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :guest_check
   def index
     @customers = Customer.all
   end
@@ -30,6 +32,12 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+  end
+
+  def guest_check
+    if current_customer == Customer.find(1)
+      redirect_to root_path,notice: "このページを見るには会員登録が必要です。"
+    end
   end
 
   private

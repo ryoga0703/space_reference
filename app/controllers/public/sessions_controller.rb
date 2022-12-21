@@ -22,6 +22,12 @@ class Public::SessionsController < Devise::SessionsController
     customer_path(current_customer.id)
   end
 
+  def guest_sign_in
+    @customer = Customer.guest
+    sign_in @customer
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
   protected
 
   def customer_state
