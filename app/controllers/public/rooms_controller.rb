@@ -3,11 +3,6 @@ class Public::RoomsController < ApplicationController
     @rooms = Room.all
   end
 
-  def individual
-    @customer = Room.find(params[:id])
-    @rooms = @customer.rooms.all
-  end
-
   def show
     @room = Room.find(params[:id])
     @comment = Comment.new
@@ -52,6 +47,6 @@ class Public::RoomsController < ApplicationController
   def room_params
     # album_tracks_attributesが子のモデルに保存する要素
     #   :id, :_destroyをつけることで、編集と削除が可能になる
-    params.require(:room).permit(:room_image, :taste_id, :introduction, furnitures_attributes: [:furniture_image, :name, :price, :introduction, :retailer_link, :_destroy, :id])
+    params.require(:room).permit(:room_image, :taste_id, :introduction, :customer_id, furnitures_attributes: [:furniture_image, :name, :price, :introduction, :retailer_link, :_destroy, :id])
   end
 end

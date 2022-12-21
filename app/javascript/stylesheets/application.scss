@@ -6,6 +6,7 @@ body {
   padding-bottom: 50px;
 }
 
+  /* テキストの影 */
 .text-shadow {
   -moz-text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
   -webkit-text-shadow: 5px 5px 6px rgba(0, 0, 0, 1);
@@ -87,7 +88,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-  height: calc(100vh - 102px - 50px);
+  min-height: calc(100vh - 102px - 50px);
 }
 
   /* 会員編集ページ背景画像 */

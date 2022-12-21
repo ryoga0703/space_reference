@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get "about"=>"homes#about"
 
-    get 'rooms/individual' => 'rooms#individual'
     resources :rooms, only: [:new,:create,:show,:index,:edit,:update,:destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:edit, :update, :create, :destroy]

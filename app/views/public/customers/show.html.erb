@@ -2,11 +2,11 @@
   <div class="container  py-5">
     <div class="row mb-5">
       <% if @customer.id == current_customer.id %>
-      <h3 class="col col-md-3 offset-md-2 text-success text-center border border-success title-myshow">
+      <h3 class="col col-md-3 offset-md-1 rounded text-success text-center border border-success title-myshow">
         <strong>マイページ</strong>
       </h3>
       <% else %>
-      <h3 class="col col-md-4 offset-md-2 text-success text-center border border-success title-myshow">
+      <h3 class="col col-md-4 offset-md-1 rounded text-success text-center border border-success title-myshow">
         <strong><%= @customer.last_name %><%= @customer.first_name %></strong>さんの部屋詳細
       </h3>
       <% end %>
@@ -14,7 +14,7 @@
     <div class="row mb-4">
       <table class="table table-bordered col col-md-8 offset-md-2">
         <tr>
-          <td style="background-color:rgba(44,199,87,0.6);" width="25%">氏名</td>
+          <td style="background-color:rgba(44,199,87,0.6);" width="25%">名前</td>
           <td style="background-color:rgba(255,255,255,0.6);" width="75%">
             <span class="mr-2"><%= @customer.last_name %></span>
             <span><%= @customer.first_name %></span>
@@ -55,9 +55,7 @@
         <tr>
           <td style="background-color:rgba(44,199,87,0.6);">部屋の投稿数</td>
           <td style="background-color:rgba(255,255,255,0.6);">
-            <%= link_to rooms_individual_path(@customer) do %>
-              <%= @customer.rooms.count %>部屋
-            <% end %>
+            <%= @customer.rooms.count %>部屋
           </td>
         </tr>
       </table>
@@ -69,6 +67,80 @@
       </div>
       <div class="col col-md-3 offset-md-1">
         <%= link_to "　部屋新規登録　", new_room_path, class: "btn btn-warning" %>
+      </div>
+    </div>
+    <% end %>
+
+
+    <div class="row pt-5 my-5">
+      <% if @customer.id == current_customer.id %>
+      <h3 class="col col-md-3 offset-md-1 rounded text-success text-center border border-success title-myshow">
+        <strong>自分の投稿一覧</strong>
+      </h3>
+      <% else %>
+      <h3 class="col col-md-4 offset-md-1 rounded text-success text-center border border-success title-myshow">
+        <strong><%= @customer.last_name %><%= @customer.first_name %></strong>さんの部屋一覧
+      </h3>
+      <% end %>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-5 offset-md-6 d-flex align-items-center justify-content-center text-danger">
+        ※部屋の写真が詳細ページのリンクになっております。
+      </div>
+    </div>
+
+    <div class="row py-3 border border-success" style="background-color:rgba(44,199,87,0.6);">
+      <div class="col-md-5 text-center">
+        < - - 部屋の写真 - - >
+      </div>
+      <div class="col-md-2 text-center">
+        < - - ユーザー名 - - >
+      </div>
+      <div class="col-md-5 text-center">
+        < - - 部屋の紹介文 - - >
+      </div>
+    </div>
+
+    <% @rooms.each do |room| %>
+    <div class="row py-3 border border-top-0 border-light" style="background-color:rgba(255,255,255,0.6);">
+      <div class="col-md-5 text-center">
+        <%= link_to room_path(room) do %>
+          <%= image_tag room.room_image, size: "430x250" %>
+        <% end %>
+      </div>
+      <div class="col-md-2 pt-3">
+        <div class="row text-center" style="width:100%">
+          <div  style="flex: 0 0 100% !important;">
+            <div class="col-12 text-center">
+              <% if @customer.id == current_customer.id %>
+                自分の投稿
+              <% else %>
+                <%= room.customer.last_name %><%= room.customer.first_name %>さん
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row py-5" style="width:100%">
+          <div  style="flex: 0 0 100% !important;">
+            <div class="col-12 text-center">
+              <% if room.favorited_by?(current_customer) %>
+                <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= room.favorites.count %> いいね👍
+                <% end %>
+              <% else %>
+                <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
+                  <i class="fas fa-heart" aria-hidden="true"></i>
+                  <%= room.favorites.count %> いいね
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 text-center py-5">
+        <%= room.introduction %>
       </div>
     </div>
     <% end %>
