@@ -1,7 +1,7 @@
 <div class="admin-tastes">
   <div class="container">
     <div class="row py-5">
-      <h3 class="col col-md-2 py-1 rounded text-center offset-md-1" style="background-color:rgba(67,224,0,0.4);">
+      <h3 class="col col-md-2 py-1 rounded text-center offset-md-1" style="color: #054d61; background-color:rgba(104,142,153,0.9);">
         <strong>会員一覧</strong>
       </h3>
     </div>
@@ -11,14 +11,18 @@
         <%= search_form_for @q do |f| %>
           <div class="row py-2">
             <!--name_contは、あいまい検索を指定-->
-            <div class="pl-3"><%= f.label :last_name, "名前(姓)" %></div>
+            <div class="pl-3"><%= f.label :last_name, "名前 (姓)" %></div>
             <div class="pl-3"><%= f.search_field :last_name_cont, placeholder:"部分一致あり" %></div>
           </div>
           <div class="row">
-            <div class="pl-3"><%= f.label :first_name, "名前(名)" %></div>
+            <div class="pl-3"><%= f.label :first_name, "名前 (名)" %></div>
             <div class="pl-3"><%= f.search_field :first_name_cont, placeholder:"部分一致あり" %></div>
+          </div>
+          <div class="row py-2">
+            <div class="pl-3"><%= f.radio_button :followers_id_eq, '', {:checked => true} %> 指定なし</div>
+            <div class="pl-3"><%= f.radio_button :followers_id_eq, current_customer.id %> フォロー中</div>
 
-            <div class="pl-3"><%= f.submit "検索" %></div>
+            <div class="pl-4"><%= f.submit "検索" %></div>
           </div>
         <% end %>
       </div>
@@ -32,27 +36,27 @@
 
     <div class="row">
       <div class="col mx-auto">
-        <table class="table table-bordered">
-          <thead style="background-color:rgba(67,224,0,0.4);">
+        <table class="table">
+          <thead style="background-color:rgba(14,91,112,0.6);">
             <tr>
-              <th>会員ID</th>
-              <th>名前</th>
-              <th>フォローステータス</th>
-              <th>フォロー数</th>
-              <th>フォロワー数</th>
+              <th class="border border-info">会員ID</th>
+              <th class="border border-info">名前</th>
+              <th class="border border-info">フォローステータス</th>
+              <th class="border border-info">フォロー数</th>
+              <th class="border border-info">フォロワー数</th>
             </tr>
           </thead>
-          <tbody style="background-color:rgba(248,255,228,0.8);">
+          <tbody style="background-color:rgba(231,250,255,0.7);">
             <% @customers.each do |customer| %>
               <% if customer.is_deleted == false && customer.id != 1 %>
               <tr>
-                <td><%= customer.id %></td>
-                <td>
+                <td class="border border-top-0 border-white"><%= customer.id %></td>
+                <td class="border border-top-0 border-white">
                   <%= link_to customer_path(customer.id), style: "color: #000; text-decoration: none;" do %>
                     <%= customer.last_name %><%= customer.first_name %>
                   <% end %>
                 </td>
-                <td>
+                <td class="border border-top-0 border-white">
                   <% if customer.id != current_customer.id %>
                     <% if current_customer.following?(customer) %>
                       <%= link_to "フォロー中", customer_relationships_path(customer.id), method: :delete, style: "color: #ff0303; text-decoration: none;" %>
@@ -61,8 +65,8 @@
                     <% end %>
                   <% end %>
                 </td>
-                <td><%= customer.followings.count %>人</td>
-                <td><%= customer.followers.count %>人</td>
+                <td class="border border-top-0 border-white"><%= customer.followings.count %>人</td>
+                <td class="border border-top-0 border-white"><%= customer.followers.count %>人</td>
               </tr>
               <% end %>
             <% end %>

@@ -5,6 +5,9 @@ class Public::CustomersController < ApplicationController
   def index
     # distinct: trueは重複したデータを除外
     @customers = @q.result(distinct: true)
+    p @customers
+    p current_customer.followings
+    p "----------"
   end
 
   def show
