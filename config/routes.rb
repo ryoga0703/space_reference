@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :rooms, only: [:new,:create,:show,:index,:edit,:update,:destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:edit, :update, :create, :destroy]
+      collection do
+        get 'search'
+      end
     end
 
     devise_scope :customer do

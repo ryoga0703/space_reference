@@ -30,11 +30,13 @@
           </thead>
           <tbody style="background-color:rgba(223,223,223,0.4);">
             <% @tastes.each do |taste| %>
-             <tr>
-               <td width="50%"><%= taste.name %></td>
-               <td width="25%"><%= link_to "　編集　", edit_admin_taste_path(taste.id), class: "btn btn-success" %></td>
-               <td width="25%"><%= link_to "　削除　", admin_taste_path(taste.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %></td>
-             </tr>
+              <% if taste.id != 1 %>
+                <tr>
+                  <td width="50%"><%= taste.name %></td>
+                  <td width="25%"><%= link_to "　編集　", edit_admin_taste_path(taste.id), class: "btn btn-success" %></td>
+                  <td width="25%"><%= link_to "　削除　", admin_taste_path(taste.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-danger' %></td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

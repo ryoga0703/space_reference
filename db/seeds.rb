@@ -18,3 +18,7 @@ Customer.create!(
    first_name_kana: 'ログイン',
    password: '111111'
 )
+
+Taste.create!(
+   name: ''
+)

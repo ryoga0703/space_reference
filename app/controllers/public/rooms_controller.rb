@@ -1,8 +1,10 @@
 class Public::RoomsController < ApplicationController
   before_action :authenticate_customer!
   before_action :guest_check, only: [:new, :create, :edit, :update, :destroy]
+  before_action :search
   def index
-    @rooms = Room.all
+    # distinct: trueは重複したデータを除外
+    @rooms = @q.result(distinct: true)
   end
 
   def show
@@ -48,6 +50,11 @@ class Public::RoomsController < ApplicationController
     if current_customer == Customer.find(1)
       redirect_to root_path,notice: "このページを見るには会員登録が必要です。"
     end
+  end
+
+  def search
+    # params[:q]のqには検索フォームに入力した値が入る
+    @q = Room.ransack(params[:q])
   end
 
   private

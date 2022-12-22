@@ -5,6 +5,20 @@
     </h3>
   </div>
 
+  <div class="row pb-5">
+    <div class="col-md-5 offset-md-7">
+      <!--検索機能-->
+      <%= search_form_for(@q, url: {controller: 'rooms', action: 'index' }) do |f| %>
+        <div class="row py-2">
+          <!--name_contは、あいまい検索を指定-->
+        <%= f.select :taste_name_cont, options_from_collection_for_select(Taste.all, :name, :name) %>
+
+          <div class="pl-4"><%= f.submit "検索" %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
   <hr>
   <hr>
 
