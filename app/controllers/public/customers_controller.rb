@@ -3,7 +3,6 @@ class Public::CustomersController < ApplicationController
   before_action :guest_check
   before_action :search
   def index
-
     # distinct: trueは重複したデータを除外
     @customers = @q.result(distinct: true)
   end

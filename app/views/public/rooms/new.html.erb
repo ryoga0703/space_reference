@@ -1,5 +1,12 @@
 <div class="room-new" id="container">
   <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <%# バリデーションメッセージの部分テンプレート %>
+        <%= render 'layouts/error_messages', model: @room %>
+      </div>
+    </div>
+
     <div class="row mb-5">
       <h3 class="col col-md-3 rounded text-center text-info border border-info title-roomnew">
         <strong>部屋の新規登録</strong>
@@ -57,6 +64,7 @@
           <strong>家具の登録</strong>
         </h4>
       </div>
+
       <div class="row">
         <div class="col">
         <%= render 'form', room: f %>

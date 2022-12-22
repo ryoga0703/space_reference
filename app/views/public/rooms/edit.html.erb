@@ -1,5 +1,11 @@
 <div class="room-new">
   <div class="container py-5">
+    <div class="row">
+      <div class="col">
+        <%# バリデーションメッセージの部分テンプレート %>
+        <%= render 'layouts/error_messages', model: @room %>
+      </div>
+    </div>
     <div class="row mb-5">
       <h3 class="col col-md-3 rounded text-center text-info border border-info title-roomnew">
         <strong>部屋の編集</strong>

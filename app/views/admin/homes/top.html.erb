@@ -6,6 +6,26 @@
       </h3>
     </div>
 
+    <div class="row pb-5">
+      <div class="col-md-5 offset-md-7">
+        <%= search_form_for(@q, url: {controller: 'homes', action: 'top' }) do |f| %>
+          <div class="row py-2">
+            <!--name_contは、あいまい検索を指定-->
+            <div class="pl-3"><%= f.label :last_name, "名前(姓)" %></div>
+            <div class="pl-3"><%= f.search_field :last_name_cont, placeholder:"部分一致あり" %></div>
+          </div>
+          <div class="row">
+            <div class="pl-3"><%= f.label :first_name, "名前(名)" %></div>
+            <div class="pl-3"><%= f.search_field :first_name_cont, placeholder:"部分一致あり" %></div>
+
+            <div class="pl-3">
+              <%= f.submit "検索" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col mx-auto">
         <table class="table table-bordered">
