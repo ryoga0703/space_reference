@@ -13,7 +13,7 @@ class Public::CommentsController < ApplicationController
 
   def edit
     @room = Room.find(params[:room_id])
-    @comment = Comment.find(params[:id])
+    @comment = current_customer.comments.find(params[:id])
   end
 
   def update
