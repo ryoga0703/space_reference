@@ -33,6 +33,12 @@ body {
   height: 100vh;
 }
 
+  /* aboutページ背景色画像 */
+.aboutbg-color {
+  background-color: #fffaf4;
+  width: 100%;
+}
+
   /* 部屋新規登録ページ背景画像 */
 .room-new {
   /* 画像ファイルの指定 */
@@ -160,7 +166,7 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
   width: 100%;
-  height: calc(100vh - 102px - 50px);
+  min-height: calc(100vh - 102px - 50px);
 }
 
   /* 管理者用テイスト関係のページ背景画像 */

@@ -6,7 +6,7 @@
   </div>
 
   <div class="row pb-5">
-    <div class="col-md-5 offset-md-7">
+    <div class="col-md-4 offset-md-8 d-flex align-items-center justify-content-center">
       <!--検索機能-->
       <%= search_form_for(@q, url: {controller: 'rooms', action: 'index' }) do |f| %>
         <div class="row py-2">
@@ -43,55 +43,57 @@
   <hr class="row my-4">
 
   <% @rooms.each do |room| %>
-  <div class="row py-3 rounded" style="background-color:#eee;">
-    <div class="col-md-5 text-center" style="background-color:#eee;">
-      <%= link_to room_path(room) do %>
-        <%= image_tag room.room_image, size: "430x250" %>
-      <% end %>
-    </div>
-    <div class="col-md-2 pt-3">
-      <div class="row text-center" style="width:100%">
-        <div  style="flex: 0 0 100% !important;">
-          <div class="col-12 text-center">
-        <%= link_to customer_path(room.customer), style: "color: #000; text-decoration: none;" do %>
-          <%= room.customer.last_name %><%= room.customer.first_name %>さん
+    <% if room.customer.is_deleted == false && room.customer.id != 1 %>
+    <div class="row py-3 rounded" style="background-color:#eee;">
+      <div class="col-md-5 text-center" style="background-color:#eee;">
+        <%= link_to room_path(room) do %>
+          <%= image_tag room.room_image, size: "430x250" %>
         <% end %>
+      </div>
+      <div class="col-md-2 pt-3">
+        <div class="row text-center" style="width:100%">
+          <div  style="flex: 0 0 100% !important;">
+            <div class="col-12 text-center">
+          <%= link_to customer_path(room.customer), style: "color: #000; text-decoration: none;" do %>
+            <%= room.customer.last_name %><%= room.customer.first_name %>さん
+          <% end %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row text-center pt-5" style="width:100%">
-        <div  style="flex: 0 0 100% !important;">
-          <div class="col-12 text-center">
-            <%= room.taste.name %>
+        <div class="row text-center pt-5" style="width:100%">
+          <div  style="flex: 0 0 100% !important;">
+            <div class="col-12 text-center">
+              <%= room.taste.name %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row py-5" style="width:100%">
-        <div  style="flex: 0 0 100% !important;">
-          <div class="col-12 text-center">
-            <% if current_customer.id != 1 %>
-              <% if room.favorited_by?(current_customer) %>
-                <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
-                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                  <%= room.favorites.count %> いいね👍
-                <% end %>
-              <% else %>
-                <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                  <%= room.favorites.count %> いいね
+        <div class="row py-5" style="width:100%">
+          <div  style="flex: 0 0 100% !important;">
+            <div class="col-12 text-center">
+              <% if current_customer.id != 1 %>
+                <% if room.favorited_by?(current_customer) %>
+                  <%= link_to room_favorites_path(room), method: :delete, style: "color: #ff0303; text-decoration: none;" do %>
+                    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= room.favorites.count %> いいね👍
+                  <% end %>
+                <% else %>
+                  <%= link_to room_favorites_path(room), method: :post, style: "text-decoration: none;" do %>
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                    <%= room.favorites.count %> いいね
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
+      <div class="col-md-5 text-center py-5">
+        <%= room.introduction %>
+      </div>
     </div>
-    <div class="col-md-5 text-center py-5">
-      <%= room.introduction %>
-    </div>
-  </div>
-  <hr>
+    <hr>
+    <% end %>
   <% end %>
 </div>
