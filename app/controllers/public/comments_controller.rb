@@ -31,7 +31,7 @@ class Public::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:danger] = "コメントを削除しました"
-    redirect_back(fallback_location: root_path)
+    redirect_to request.referer
   end
 
   private
