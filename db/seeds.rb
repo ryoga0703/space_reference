@@ -20,5 +20,5 @@ Customer.create!(
 )
 
 Taste.create!(
-   name: ''
+   name: '　'
 )
