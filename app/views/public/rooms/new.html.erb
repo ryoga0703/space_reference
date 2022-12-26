@@ -19,9 +19,9 @@
     </div>
     <%= form_with model: @room, url: rooms_path, method: :post do |f| %>
       <div class="row">
-        <div class="col-md-5" style="text-align: center;">
+        <div class="col-md-5 d-flex align-items-center justify-content-center">
           <!-- プレビュー用にあらかじめ1pxサイズの画像データを表示 -->
-          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="room-img-size">
+          <img id="room_image_preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="room-img-size d-flex align-items-center justify-content-center">
         </div>
         <div class="col-md-6 offset-md-1">
           <div class="form-group">
