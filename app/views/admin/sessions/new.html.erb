@@ -10,15 +10,23 @@
       <div class="col col-md-8 offset-md-3">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="row py-3 field">
-          <label class="email">メールアドレス　　　</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, size: "40" %>
+          <div class="col col-md-3">
+            <label class="email">メールアドレス　　　</label>
+          </div>
+          <div class="col col-md-6 offset-md-1">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, size: "40" %>
+          </div>
         </div>
         <div class="row py-3 field">
-          <label class="password">パスワード　　　　　</label>
-          <%= f.password_field :password, autocomplete: "current-password", required: true, size: "40" %>
+          <div class="col col-md-3">
+            <label class="password">パスワード　　　　　</label>
+          </div>
+          <div class="col col-md-6 offset-md-1">
+            <%= f.password_field :password, autocomplete: "current-password", required: true, size: "40" %>
+          </div>
         </div>
         <div class="row py-4">
-          <div class="action col-md-1 offset-md-3">
+          <div class="action col-md-1 offset-md-4 d-flex align-items-center justify-content-center">
             <%= f.submit "　ログイン　", class: "btn btn-primary" %>
           </div>
         </div>
