@@ -13,6 +13,7 @@
       <div class="row mb-5 mt-3">
         <div class="col col-md-8 offset-md-3">
         <%= form_with model: @customer, url: customer_session_path do |f| %>
+        <p class="alert"><%= alert %></p>
           <%= render "public/shared/error_messages", resource: resource %>
           <div class="row py-3 field">
             <div class="col col-md-3">
