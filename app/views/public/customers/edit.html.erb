@@ -5,6 +5,7 @@
         <strong>会員情報編集</strong>
       </h3>
     </div>
+
     <%= form_with model: @customer, url: customer_path(current_customer.id) do |f| %>
     <%= render "public/shared/error_messages", resource: @customer %>
     <div class="row mb-3">
