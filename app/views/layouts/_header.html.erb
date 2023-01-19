@@ -8,7 +8,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-
         <% if customer_signed_in? %>
           <li class="nav-item ml-auto">
             <%= link_to 'マイページ',customer_path(current_customer.id), class: "nav-link text-dark" %>
@@ -49,7 +48,6 @@
             <%= link_to 'ログイン', new_customer_session_path, class: "nav-link text-dark" %>
           </li>
         <% end %>
-
       </ul>
     </div>
   </div>
