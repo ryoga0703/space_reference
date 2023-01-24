@@ -17,6 +17,7 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, size: "40" %>
           </div>
         </div>
+
         <div class="row py-3 field">
           <div class="col col-md-3">
             <label class="password">パスワード　　　　　</label>
@@ -25,6 +26,7 @@
             <%= f.password_field :password, autocomplete: "current-password", required: true, size: "40" %>
           </div>
         </div>
+
         <div class="row py-4">
           <div class="action col-md-1 offset-md-4 d-flex align-items-center justify-content-center">
             <%= f.submit "　ログイン　", class: "btn btn-primary" %>
