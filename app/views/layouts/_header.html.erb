@@ -3,9 +3,11 @@
     <a class="navbar-brand pb-0" href="/">
       <%= video_tag("/videos/Space_Reference_bglogo.mp4", autoplay: :true, muted: :true, width: "90", height: "90", class: 'video-content') %>
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
